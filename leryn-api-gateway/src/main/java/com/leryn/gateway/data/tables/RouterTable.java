@@ -17,7 +17,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row9;
+import org.jooq.Row11;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -75,14 +75,24 @@ public class RouterTable extends TableImpl<RouterTableRecord> {
     public final TableField<RouterTableRecord, Boolean> REWRITE = createField(DSL.name("rewrite"), SQLDataType.BOOLEAN.nullable(false).defaultValue(DSL.inline("0", SQLDataType.BOOLEAN)), this, "是否重写URL路径");
 
     /**
-     * The column <code>gateway.router_table.rewrite_regexp</code>. 重写表达式
+     * The column <code>gateway.router_table.rewrite_regexp</code>. 重写表达式(Spring Cloud标准)
      */
-    public final TableField<RouterTableRecord, String> REWRITE_REGEXP = createField(DSL.name("rewrite_regexp"), SQLDataType.VARCHAR(100), this, "重写表达式");
+    public final TableField<RouterTableRecord, String> REWRITE_REGEXP = createField(DSL.name("rewrite_regexp"), SQLDataType.VARCHAR(100), this, "重写表达式(Spring Cloud标准)");
 
     /**
-     * The column <code>gateway.router_table.rewrite_target</code>. 重写表达式
+     * The column <code>gateway.router_table.rewrite_target</code>. 重写表达式(Spring Cloud标准)
      */
-    public final TableField<RouterTableRecord, String> REWRITE_TARGET = createField(DSL.name("rewrite_target"), SQLDataType.VARCHAR(100), this, "重写表达式");
+    public final TableField<RouterTableRecord, String> REWRITE_TARGET = createField(DSL.name("rewrite_target"), SQLDataType.VARCHAR(100), this, "重写表达式(Spring Cloud标准)");
+
+    /**
+     * The column <code>gateway.router_table.api_version</code>. API版本(如v1,v2等)
+     */
+    public final TableField<RouterTableRecord, String> API_VERSION = createField(DSL.name("api_version"), SQLDataType.VARCHAR(10).defaultValue(DSL.inline("v1", SQLDataType.VARCHAR)), this, "API版本(如v1,v2等)");
+
+    /**
+     * The column <code>gateway.router_table.profile</code>. 环境, profile
+     */
+    public final TableField<RouterTableRecord, String> PROFILE = createField(DSL.name("profile"), SQLDataType.VARCHAR(100).defaultValue(DSL.inline("default", SQLDataType.VARCHAR)), this, "环境, profile");
 
     /**
      * The column <code>gateway.router_table.create_time</code>. 创建时间
@@ -174,11 +184,11 @@ public class RouterTable extends TableImpl<RouterTableRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row9 type methods
+    // Row11 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row9<Integer, String, String, String, Boolean, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
-        return (Row9) super.fieldsRow();
+    public Row11<Integer, String, String, String, Boolean, String, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
+        return (Row11) super.fieldsRow();
     }
 }

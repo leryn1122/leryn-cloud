@@ -4,8 +4,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import com.leryn.auth.constant.SecurityConstants;
-import com.leryn.base.exception.BusinessException;
-import com.leryn.base.model.BaseApi;
+import com.leryn.auth.exception.BusinessException;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -28,6 +27,8 @@ public class JwtUtils {
     System.out.println("Verification is : " + verify(token, username, "123456"));
   }
 
+  private static final String USERNAME = "username";
+
   /** JWT过期时间: 30分钟 */
   public static final long EXPIRE_TIME = 30 * 60 * 1000L;
 
@@ -38,7 +39,7 @@ public class JwtUtils {
     try {
       Algorithm algorithm = Algorithm.HMAC256(secret);
       JWTVerifier jwtVerifier = JWT.require(algorithm)
-        .withClaim(BaseApi.USERNAME, username).build();
+        .withClaim(USERNAME, username).build();
       DecodedJWT decodedJWT = jwtVerifier.verify(token);
       return true;
     } catch (JWTVerificationException | IllegalArgumentException e) {
@@ -52,7 +53,7 @@ public class JwtUtils {
   public static String getUsername(String token) {
     try {
       DecodedJWT decodedJWT = JWT.decode(token);
-      return decodedJWT.getClaim(BaseApi.USERNAME).asString();
+      return decodedJWT.getClaim(USERNAME).asString();
     } catch (JWTDecodeException e) {
       return null;
     }
@@ -64,7 +65,7 @@ public class JwtUtils {
   public static String sign(String username, String secret) {
     Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
     Algorithm algorithm = Algorithm.HMAC256(secret);
-    return JWT.create().withClaim(BaseApi.USERNAME, username)
+    return JWT.create().withClaim(USERNAME, username)
       .withExpiresAt(date).sign(algorithm);
   }
 

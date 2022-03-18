@@ -130,14 +130,14 @@ public class UserDao extends DAOImpl<UserRecord, com.leryn.auth.data.tables.pojo
     /**
      * Fetch records that have <code>password_activated BETWEEN lowerInclusive AND upperInclusive</code>
      */
-    public List<com.leryn.auth.data.tables.pojos.User> fetchRangeOfPasswordActivated(Byte lowerInclusive, Byte upperInclusive) {
+    public List<com.leryn.auth.data.tables.pojos.User> fetchRangeOfPasswordActivated(Boolean lowerInclusive, Boolean upperInclusive) {
         return fetchRange(User.USER.PASSWORD_ACTIVATED, lowerInclusive, upperInclusive);
     }
 
     /**
      * Fetch records that have <code>password_activated IN (values)</code>
      */
-    public List<com.leryn.auth.data.tables.pojos.User> fetchByPasswordActivated(Byte... values) {
+    public List<com.leryn.auth.data.tables.pojos.User> fetchByPasswordActivated(Boolean... values) {
         return fetch(User.USER.PASSWORD_ACTIVATED, values);
     }
 

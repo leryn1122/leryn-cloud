@@ -19,7 +19,7 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 用户表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
-public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Record9<Integer, Integer, String, String, String, Byte, String, LocalDateTime, LocalDateTime> {
+public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Record9<Integer, Integer, String, String, String, Boolean, String, LocalDateTime, LocalDateTime> {
 
     private static final long serialVersionUID = 1L;
 
@@ -96,15 +96,15 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Setter for <code>idaas.user.password_activated</code>. 密码是否激活
      */
-    public void setPasswordActivated(Byte value) {
+    public void setPasswordActivated(Boolean value) {
         set(5, value);
     }
 
     /**
      * Getter for <code>idaas.user.password_activated</code>. 密码是否激活
      */
-    public Byte getPasswordActivated() {
-        return (Byte) get(5);
+    public Boolean getPasswordActivated() {
+        return (Boolean) get(5);
     }
 
     /**
@@ -163,12 +163,12 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     // -------------------------------------------------------------------------
 
     @Override
-    public Row9<Integer, Integer, String, String, String, Byte, String, LocalDateTime, LocalDateTime> fieldsRow() {
+    public Row9<Integer, Integer, String, String, String, Boolean, String, LocalDateTime, LocalDateTime> fieldsRow() {
         return (Row9) super.fieldsRow();
     }
 
     @Override
-    public Row9<Integer, Integer, String, String, String, Byte, String, LocalDateTime, LocalDateTime> valuesRow() {
+    public Row9<Integer, Integer, String, String, String, Boolean, String, LocalDateTime, LocalDateTime> valuesRow() {
         return (Row9) super.valuesRow();
     }
 
@@ -198,7 +198,7 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     }
 
     @Override
-    public Field<Byte> field6() {
+    public Field<Boolean> field6() {
         return User.USER.PASSWORD_ACTIVATED;
     }
 
@@ -243,7 +243,7 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     }
 
     @Override
-    public Byte component6() {
+    public Boolean component6() {
         return getPasswordActivated();
     }
 
@@ -288,7 +288,7 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     }
 
     @Override
-    public Byte value6() {
+    public Boolean value6() {
         return getPasswordActivated();
     }
 
@@ -338,7 +338,7 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     }
 
     @Override
-    public UserRecord value6(Byte value) {
+    public UserRecord value6(Boolean value) {
         setPasswordActivated(value);
         return this;
     }
@@ -362,7 +362,7 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     }
 
     @Override
-    public UserRecord values(Integer value1, Integer value2, String value3, String value4, String value5, Byte value6, String value7, LocalDateTime value8, LocalDateTime value9) {
+    public UserRecord values(Integer value1, Integer value2, String value3, String value4, String value5, Boolean value6, String value7, LocalDateTime value8, LocalDateTime value9) {
         value1(value1);
         value2(value2);
         value3(value3);
@@ -389,7 +389,7 @@ public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Recor
     /**
      * Create a detached, initialised UserRecord
      */
-    public UserRecord(Integer id, Integer userId, String username, String password, String salt, Byte passwordActivated, String avatar, LocalDateTime createTime, LocalDateTime modifiedTime) {
+    public UserRecord(Integer id, Integer userId, String username, String password, String salt, Boolean passwordActivated, String avatar, LocalDateTime createTime, LocalDateTime modifiedTime) {
         super(User.USER);
 
         setId(id);

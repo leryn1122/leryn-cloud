@@ -35,13 +35,6 @@
 			<springAnnotations>true</springAnnotations>
 		</generate>
 
-		<forcedTypes>
-			<forcedType>
-				<name>BOOLEAN</name>
-				<includeTypes>(?i:TINYINT\(1\))</includeTypes>
-			</forcedType>
-		</forcedTypes>
-
 		<target>
 			<packageName>com.leryn.auth.data</packageName>
 			<directory>src/main/java</directory>

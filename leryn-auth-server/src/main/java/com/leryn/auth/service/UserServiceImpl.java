@@ -56,10 +56,14 @@ public class UserServiceImpl implements UserService {
   protected List<Authority> getAuthorities(String username) {
     List<Authority> authorities = dsl.select(Tables.AUTHORITY.fields())
       .from(Tables.USER)
-      .join(Tables.USER_ROLE_RELATION).on(Tables.USER_ROLE_RELATION.USER_ID.eq(Tables.USER.USER_ID))
-      .join(Tables.ROLE).on(Tables.ROLE.ROLE_ID.eq(Tables.USER_ROLE_RELATION.ROLE_ID))
-      .join(Tables.ROLE_AUTHORITY_RELATION).on(Tables.ROLE.ROLE_ID.eq(Tables.USER_ROLE_RELATION.ROLE_ID))
-      .join(Tables.AUTHORITY).on(Tables.AUTHORITY.AUTHORITY_ID.eq(Tables.ROLE_AUTHORITY_RELATION.AUTHORITY_ID))
+      .join(Tables.USER_ROLE_RELATION)
+        .on(Tables.USER_ROLE_RELATION.USER_ID.eq(Tables.USER.USER_ID))
+      .join(Tables.ROLE)
+        .on(Tables.ROLE.ROLE_ID.eq(Tables.USER_ROLE_RELATION.ROLE_ID))
+      .join(Tables.ROLE_AUTHORITY_RELATION)
+        .on(Tables.ROLE.ROLE_ID.eq(Tables.USER_ROLE_RELATION.ROLE_ID))
+      .join(Tables.AUTHORITY)
+        .on(Tables.AUTHORITY.AUTHORITY_ID.eq(Tables.ROLE_AUTHORITY_RELATION.AUTHORITY_ID))
       .where(Tables.USER.USERNAME.eq(username))
       .fetchInto(Authority.class);
     return authorities;

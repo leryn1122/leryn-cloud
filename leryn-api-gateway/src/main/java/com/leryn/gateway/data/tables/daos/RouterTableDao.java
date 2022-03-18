@@ -156,6 +156,34 @@ public class RouterTableDao extends DAOImpl<RouterTableRecord, com.leryn.gateway
     }
 
     /**
+     * Fetch records that have <code>api_version BETWEEN lowerInclusive AND upperInclusive</code>
+     */
+    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchRangeOfApiVersion(String lowerInclusive, String upperInclusive) {
+        return fetchRange(RouterTable.ROUTER_TABLE.API_VERSION, lowerInclusive, upperInclusive);
+    }
+
+    /**
+     * Fetch records that have <code>api_version IN (values)</code>
+     */
+    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchByApiVersion(String... values) {
+        return fetch(RouterTable.ROUTER_TABLE.API_VERSION, values);
+    }
+
+    /**
+     * Fetch records that have <code>profile BETWEEN lowerInclusive AND upperInclusive</code>
+     */
+    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchRangeOfProfile(String lowerInclusive, String upperInclusive) {
+        return fetchRange(RouterTable.ROUTER_TABLE.PROFILE, lowerInclusive, upperInclusive);
+    }
+
+    /**
+     * Fetch records that have <code>profile IN (values)</code>
+     */
+    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchByProfile(String... values) {
+        return fetch(RouterTable.ROUTER_TABLE.PROFILE, values);
+    }
+
+    /**
      * Fetch records that have <code>create_time BETWEEN lowerInclusive AND upperInclusive</code>
      */
     public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchRangeOfCreateTime(LocalDateTime lowerInclusive, LocalDateTime upperInclusive) {

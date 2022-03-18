@@ -23,6 +23,8 @@ public class RouterTable implements Serializable {
     private Boolean       rewrite;
     private String        rewriteRegexp;
     private String        rewriteTarget;
+    private String        apiVersion;
+    private String        profile;
     private LocalDateTime createTime;
     private LocalDateTime modifiedTime;
 
@@ -36,6 +38,8 @@ public class RouterTable implements Serializable {
         this.rewrite = value.rewrite;
         this.rewriteRegexp = value.rewriteRegexp;
         this.rewriteTarget = value.rewriteTarget;
+        this.apiVersion = value.apiVersion;
+        this.profile = value.profile;
         this.createTime = value.createTime;
         this.modifiedTime = value.modifiedTime;
     }
@@ -48,6 +52,8 @@ public class RouterTable implements Serializable {
         Boolean       rewrite,
         String        rewriteRegexp,
         String        rewriteTarget,
+        String        apiVersion,
+        String        profile,
         LocalDateTime createTime,
         LocalDateTime modifiedTime
     ) {
@@ -58,6 +64,8 @@ public class RouterTable implements Serializable {
         this.rewrite = rewrite;
         this.rewriteRegexp = rewriteRegexp;
         this.rewriteTarget = rewriteTarget;
+        this.apiVersion = apiVersion;
+        this.profile = profile;
         this.createTime = createTime;
         this.modifiedTime = modifiedTime;
     }
@@ -133,31 +141,59 @@ public class RouterTable implements Serializable {
     }
 
     /**
-     * Getter for <code>gateway.router_table.rewrite_regexp</code>. 重写表达式
+     * Getter for <code>gateway.router_table.rewrite_regexp</code>. 重写表达式(Spring Cloud标准)
      */
     public String getRewriteRegexp() {
         return this.rewriteRegexp;
     }
 
     /**
-     * Setter for <code>gateway.router_table.rewrite_regexp</code>. 重写表达式
+     * Setter for <code>gateway.router_table.rewrite_regexp</code>. 重写表达式(Spring Cloud标准)
      */
     public void setRewriteRegexp(String rewriteRegexp) {
         this.rewriteRegexp = rewriteRegexp;
     }
 
     /**
-     * Getter for <code>gateway.router_table.rewrite_target</code>. 重写表达式
+     * Getter for <code>gateway.router_table.rewrite_target</code>. 重写表达式(Spring Cloud标准)
      */
     public String getRewriteTarget() {
         return this.rewriteTarget;
     }
 
     /**
-     * Setter for <code>gateway.router_table.rewrite_target</code>. 重写表达式
+     * Setter for <code>gateway.router_table.rewrite_target</code>. 重写表达式(Spring Cloud标准)
      */
     public void setRewriteTarget(String rewriteTarget) {
         this.rewriteTarget = rewriteTarget;
+    }
+
+    /**
+     * Getter for <code>gateway.router_table.api_version</code>. API版本(如v1,v2等)
+     */
+    public String getApiVersion() {
+        return this.apiVersion;
+    }
+
+    /**
+     * Setter for <code>gateway.router_table.api_version</code>. API版本(如v1,v2等)
+     */
+    public void setApiVersion(String apiVersion) {
+        this.apiVersion = apiVersion;
+    }
+
+    /**
+     * Getter for <code>gateway.router_table.profile</code>. 环境, profile
+     */
+    public String getProfile() {
+        return this.profile;
+    }
+
+    /**
+     * Setter for <code>gateway.router_table.profile</code>. 环境, profile
+     */
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
     /**
@@ -199,6 +235,8 @@ public class RouterTable implements Serializable {
         sb.append(", ").append(rewrite);
         sb.append(", ").append(rewriteRegexp);
         sb.append(", ").append(rewriteTarget);
+        sb.append(", ").append(apiVersion);
+        sb.append(", ").append(profile);
         sb.append(", ").append(createTime);
         sb.append(", ").append(modifiedTime);
 

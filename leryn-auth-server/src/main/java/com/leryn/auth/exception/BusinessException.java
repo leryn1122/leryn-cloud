@@ -1,4 +1,4 @@
-package com.leryn.base.exception;
+package com.leryn.auth.exception;
 
 /**
  * @author Leryn

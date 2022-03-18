@@ -21,11 +21,6 @@
 			<artifactId>leryn-common</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		<dependency>
-			<groupId>com.leryn</groupId>
-			<artifactId>leryn-base</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

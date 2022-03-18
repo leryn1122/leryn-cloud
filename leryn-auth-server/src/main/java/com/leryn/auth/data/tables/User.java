@@ -77,7 +77,7 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>idaas.user.password_activated</code>. 密码是否激活
      */
-    public final TableField<UserRecord, Byte> PASSWORD_ACTIVATED = createField(DSL.name("password_activated"), SQLDataType.TINYINT.nullable(false).defaultValue(DSL.inline("0", SQLDataType.TINYINT)), this, "密码是否激活");
+    public final TableField<UserRecord, Boolean> PASSWORD_ACTIVATED = createField(DSL.name("password_activated"), SQLDataType.BOOLEAN.nullable(false).defaultValue(DSL.inline("0", SQLDataType.BOOLEAN)), this, "密码是否激活");
 
     /**
      * The column <code>idaas.user.avatar</code>. 头像URL
@@ -178,7 +178,7 @@ public class User extends TableImpl<UserRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row9<Integer, Integer, String, String, String, Byte, String, LocalDateTime, LocalDateTime> fieldsRow() {
+    public Row9<Integer, Integer, String, String, String, Boolean, String, LocalDateTime, LocalDateTime> fieldsRow() {
         return (Row9) super.fieldsRow();
     }
 }

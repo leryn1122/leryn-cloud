@@ -21,7 +21,7 @@ public class User implements Serializable {
     private String        username;
     private String        password;
     private String        salt;
-    private Byte          passwordActivated;
+    private Boolean       passwordActivated;
     private String        avatar;
     private LocalDateTime createTime;
     private LocalDateTime modifiedTime;
@@ -46,7 +46,7 @@ public class User implements Serializable {
         String        username,
         String        password,
         String        salt,
-        Byte          passwordActivated,
+        Boolean       passwordActivated,
         String        avatar,
         LocalDateTime createTime,
         LocalDateTime modifiedTime
@@ -135,14 +135,14 @@ public class User implements Serializable {
     /**
      * Getter for <code>idaas.user.password_activated</code>. 密码是否激活
      */
-    public Byte getPasswordActivated() {
+    public Boolean getPasswordActivated() {
         return this.passwordActivated;
     }
 
     /**
      * Setter for <code>idaas.user.password_activated</code>. 密码是否激活
      */
-    public void setPasswordActivated(Byte passwordActivated) {
+    public void setPasswordActivated(Boolean passwordActivated) {
         this.passwordActivated = passwordActivated;
     }
 

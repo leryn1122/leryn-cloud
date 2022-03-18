@@ -1,4 +1,4 @@
-package com.leryn.base.controller;
+package com.leryn.auth.controller;
 
 import com.leryn.common.vo.RestfulResponse;
 
