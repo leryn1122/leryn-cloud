@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+	<jdbc>
+		<driver>com.mysql.cj.jdbc.Driver</driver>
+		<url>jdbc:mysql://leryn.top:3306/idaas?nullCatalogMeansCurrent=true</url>
+		<user>scott</user>
+		<password>907BR1jQ05P3hxBu</password>
+	</jdbc>
+	<generator>
+		<name>org.jooq.codegen.JavaGenerator</name>
+		<database>
+			<!--下面这两行是为view也生成代码的关键-->
+			<!--force generating id'sfor everything in public schema, that has an 'id' field-->
+			<syntheticPrimaryKeys>public\..*\.id</syntheticPrimaryKeys>
+			<!--name for fake primary key-->
+			<overridePrimaryKeys>override_primmary_key</overridePrimaryKeys>
+			<syntheticObjects/>
+
+			<name>org.jooq.meta.mysql.MySQLDatabase</name>
+			<includes>.*</includes>
+			<inputSchema>idaas</inputSchema>
+			<forcedTypes>
+				<forcedType>
+					<name>BOOLEAN</name>
+					<includeTypes>(?i:TINYINT\(1\))</includeTypes>
+				</forcedType>
+			</forcedTypes>
+		</database>
+
+		<generate>
+			<daos>true</daos>
+			<pojos>true</pojos>
+			<javaTimeTypes>true</javaTimeTypes>
+			<!--<interfaces>true</interfaces>-->
+			<springAnnotations>true</springAnnotations>
+		</generate>
+
+		<forcedTypes>
+			<forcedType>
+				<name>BOOLEAN</name>
+				<includeTypes>(?i:TINYINT\(1\))</includeTypes>
+			</forcedType>
+		</forcedTypes>
+
+		<target>
+			<packageName>com.leryn.auth.data</packageName>
+			<directory>src/main/java</directory>
+		</target>
+
+	</generator>
+</configuration>

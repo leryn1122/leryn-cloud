@@ -1,0 +1,26 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: Leryn API Gateway Server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
+    hikari:
+      pool-name: DateHikariCP
+      maximum-pool-size: 50
+      max-lifetime: 18000
+      idle-timeout: 18000
+      auto-commit: true
+      minimum-idle: 5
+      connection-timeout: 3000
+      connection-test-query: select 1 from dual
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:SS
+    time-zone: GMT+8
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    throw-exception-if-no-handler-found: true

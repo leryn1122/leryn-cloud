@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.leryn.message.proto";
+//option java_outer_classname = "StockServiceProto";
+
+// The stock service definition.
+service StockService {
+  // get stock price by name
+  rpc GetStockPrice (StockServiceRequest) returns (StockServiceReply) {
+  }
+}
+
+// The request message
+message StockServiceRequest {
+  string name = 1;
+}
+
+// The response message
+message StockServiceReply {
+  string message = 1;
+}

@@ -1,0 +1,8 @@
+application:
+  docker:
+    host: tcp://docker-api.leryn.top
+    registryUrl: http://docker.leryn.top/v2
+    certPath: "D:\\Resource\\Project\\gitee\\leryn-cloud\\leryn-kubernetes\\src\\main\\resources\\"
+    username: docker
+    password: 123456
+    email: leryn@gitee.com
