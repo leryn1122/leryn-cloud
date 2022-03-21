@@ -37,7 +37,6 @@ public class GlobalCorsConfiguration {
     "X-Requested-With",
     "X-Access-Token");
 
-
   @Bean
   public WebFilter corsFilter() {
     return (ServerWebExchange exchange, WebFilterChain chain) -> {

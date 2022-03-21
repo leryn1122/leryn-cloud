@@ -154,7 +154,7 @@ public class RouterTable extends TableImpl<RouterTableRecord> {
 
     @Override
     public List<UniqueKey<RouterTableRecord>> getKeys() {
-        return Arrays.<UniqueKey<RouterTableRecord>>asList(Keys.KEY_ROUTER_TABLE_PRIMARY, Keys.KEY_ROUTER_TABLE_ROUTER_UN);
+        return Arrays.<UniqueKey<RouterTableRecord>>asList(Keys.KEY_ROUTER_TABLE_PRIMARY);
     }
 
     @Override

@@ -10,38 +10,29 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>leryn-kubernetes</artifactId>
+	<artifactId>leryn-data-base</artifactId>
 
 	<properties>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.leryn</groupId>
-			<artifactId>leryn-common</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jooq</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.leryn</groupId>
-			<artifactId>leryn-web-base</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.docker-java</groupId>
-			<artifactId>docker-java</artifactId>
+			<groupId>org.jooq</groupId>
+			<artifactId>jooq-meta</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.docker-java</groupId>
-			<artifactId>docker-java-transport-httpclient5</artifactId>
+			<groupId>org.jooq</groupId>
+			<artifactId>jooq-codegen</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

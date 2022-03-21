@@ -15,14 +15,17 @@
 	<artifactId>leryn-cloud</artifactId>
 	<packaging>pom</packaging>
 	<version>1.0.0</version>
+
 	<modules>
-		<module>leryn-common</module>
-		<module>leryn-base</module>
 		<module>leryn-api-gateway</module>
 		<module>leryn-auth-server</module>
+		<module>leryn-common</module>
+		<module>leryn-data-base</module>
+		<module>leryn-dependencies</module>
+		<module>leryn-grpc-base</module>
 		<module>leryn-message</module>
 		<module>leryn-kubernetes</module>
-		<module>leryn-grpc-base</module>
+		<module>leryn-web-base</module>
 	</modules>
 
 	<properties>
@@ -33,26 +36,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<profile.name>dev</profile.name>
-				<profileActive>dev</profileActive>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<profile.name>prod</profile.name>
-				<profileActive>prod</profileActive>
-			</properties>
-		</profile>
-	</profiles>
-
 	<dependencyManagement>
 		<dependencies>
-
 		</dependencies>
 	</dependencyManagement>
 

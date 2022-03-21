@@ -3,25 +3,28 @@
 				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<parent>
-		<artifactId>leryn-cloud</artifactId>
+		<artifactId>leryn-dependencies</artifactId>
 		<groupId>com.leryn</groupId>
 		<version>1.0.0</version>
+		<relativePath>../leryn-dependencies</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>leryn-api-gateway</artifactId>
 
 	<properties>
-		<spring-cloud.version>2021.0.1</spring-cloud.version>
-		<guava.version>31.1-jre</guava.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.leryn</groupId>
 			<artifactId>leryn-common</artifactId>
-			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.leryn</groupId>
+			<artifactId>leryn-data-base</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
@@ -64,41 +67,21 @@
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>org.jooq</groupId>
 				<artifactId>jooq-codegen-maven</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>${mysql.version}</version>
-					</dependency>
-				</dependencies>
-				<configuration>
-					<configurationFile>src/main/resources/jooq-config.xml</configurationFile>
-				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

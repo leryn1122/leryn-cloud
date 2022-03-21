@@ -25,5 +25,4 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<RouterTableRecord> KEY_ROUTER_TABLE_PRIMARY = Internal.createUniqueKey(RouterTable.ROUTER_TABLE, DSL.name("KEY_router_table_PRIMARY"), new TableField[] { RouterTable.ROUTER_TABLE.ID }, true);
-    public static final UniqueKey<RouterTableRecord> KEY_ROUTER_TABLE_ROUTER_UN = Internal.createUniqueKey(RouterTable.ROUTER_TABLE, DSL.name("KEY_router_table_router_UN"), new TableField[] { RouterTable.ROUTER_TABLE.ROUTER_ID }, true);
 }

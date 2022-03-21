@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Leryn
  * @since Leryn 1.0.0
  */
-@SpringBootApplication(scanBasePackages = {"com.leryn.base", "com.leryn.auth"})
+@SpringBootApplication
 public class LerynAuthServerApplication {
 
   public static void main(String[] args) {

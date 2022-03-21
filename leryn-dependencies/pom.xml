@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>leryn-cloud</artifactId>
+		<groupId>com.leryn</groupId>
+		<version>1.0.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>leryn-dependencies</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+		<java.version>8</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<leryn.version>1.0.0</leryn.version>
+		<spring-boot.version>2.6.2</spring-boot.version>
+		<spring-cloud.version>2021.0.1</spring-cloud.version>
+		<guava.version>31.1-jre</guava.version>
+
+		<mysql.version>8.0.27</mysql.version>
+
+		<protobuf-java.version>3.17.2</protobuf-java.version>
+		<spring-grpc.version>2.13.1.RELEASE</spring-grpc.version>
+
+		<javax-mail.version>1.4.1</javax-mail.version>
+		<docker-java.version>3.2.12</docker-java.version>
+
+		<os-maven-plugin.version>1.6.1</os-maven-plugin.version>
+		<protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
+		<docker-maven-plugin.version>1.2.2</docker-maven-plugin.version>
+
+		<docker-registry>docker.leryn.top</docker-registry>
+		<jdk.base.image>openjdk:8-jre-slim</jdk.base.image>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.leryn</groupId>
+				<artifactId>leryn-common</artifactId>
+				<version>${leryn.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.leryn</groupId>
+				<artifactId>leryn-data-base</artifactId>
+				<version>${leryn.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.leryn</groupId>
+				<artifactId>leryn-grpc-base</artifactId>
+				<version>${leryn.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.leryn</groupId>
+				<artifactId>leryn-web-base</artifactId>
+				<version>${leryn.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-parent</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.auth0</groupId>
+				<artifactId>java-jwt</artifactId>
+				<version>3.18.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.protobuf</groupId>
+				<artifactId>protobuf-java</artifactId>
+				<version>${protobuf-java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.devh</groupId>
+				<artifactId>grpc-server-spring-boot-starter</artifactId>
+				<version>${spring-grpc.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>net.devh</groupId>
+				<artifactId>grpc-client-spring-boot-starter</artifactId>
+				<version>${spring-grpc.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>mail</artifactId>
+				<version>${javax-mail.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.docker-java</groupId>
+				<artifactId>docker-java</artifactId>
+				<version>${docker-java.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.github.docker-java</groupId>
+						<artifactId>docker-java-transport-jersey</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.github.docker-java</groupId>
+				<artifactId>docker-java-transport-httpclient5</artifactId>
+				<version>${docker-java.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>kr.motd.maven</groupId>
+				<artifactId>os-maven-plugin</artifactId>
+				<version>${os-maven-plugin.version}</version>
+			</extension>
+		</extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.xolstice.maven.plugins</groupId>
+					<artifactId>protobuf-maven-plugin</artifactId>
+					<version>${protobuf-maven-plugin.version}</version>
+					<configuration>
+						<protocArtifact>com.google.protobuf:protoc:3.6.1:exe:${os.detected.classifier}</protocArtifact>
+						<pluginArtifact>io.grpc:protoc-gen-grpc-java:1.16.1:exe:${os.detected.classifier}</pluginArtifact>
+						<pluginId>grpc-java</pluginId>
+						<protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
+						<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+						<clearOutputDirectory>false</clearOutputDirectory>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>test-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.jooq</groupId>
+					<artifactId>jooq-codegen-maven</artifactId>
+					<dependencies>
+						<dependency>
+							<groupId>mysql</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+							<version>${mysql.version}</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<configurationFile>src/main/resources/jooq-config.xml</configurationFile>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>com.spotify</groupId>
+					<artifactId>docker-maven-plugin</artifactId>
+					<version>${docker-maven-plugin.version}</version>
+					<configuration>
+						<imageName>${docker-registry}/leryn/${project.name}</imageName>
+						<baseImage>${docker-registry}/${jdk.base.image}</baseImage>
+						<dockerHost>http://leryn.top:12375</dockerHost>
+						<registryUrl>https://${docker-registry}</registryUrl>
+						<workdir>/opt</workdir>
+						<cmd>["java", "-jar", "-Dspring.profiles.active=prod", "${project.build.finalName}.jar"]</cmd>
+						<resources>
+							<resource>
+								<targetPath>/opt</targetPath>
+								<directory>${project.build.directory}</directory>
+								<include>${project.build.finalName}.jar</include>
+							</resource>
+						</resources>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

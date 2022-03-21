@@ -79,13 +79,6 @@ public class RouterTableDao extends DAOImpl<RouterTableRecord, com.leryn.gateway
     }
 
     /**
-     * Fetch a unique record that has <code>router_id = value</code>
-     */
-    public com.leryn.gateway.data.tables.pojos.RouterTable fetchOneByRouterId(String value) {
-        return fetchOne(RouterTable.ROUTER_TABLE.ROUTER_ID, value);
-    }
-
-    /**
      * Fetch records that have <code>url_prefix BETWEEN lowerInclusive AND upperInclusive</code>
      */
     public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchRangeOfUrlPrefix(String lowerInclusive, String upperInclusive) {
