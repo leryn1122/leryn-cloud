@@ -93,17 +93,17 @@ public class RouterTableDao extends DAOImpl<RouterTableRecord, com.leryn.gateway
     }
 
     /**
-     * Fetch records that have <code>route_host BETWEEN lowerInclusive AND upperInclusive</code>
+     * Fetch records that have <code>service BETWEEN lowerInclusive AND upperInclusive</code>
      */
-    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchRangeOfRouteHost(String lowerInclusive, String upperInclusive) {
-        return fetchRange(RouterTable.ROUTER_TABLE.ROUTE_HOST, lowerInclusive, upperInclusive);
+    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchRangeOfService(String lowerInclusive, String upperInclusive) {
+        return fetchRange(RouterTable.ROUTER_TABLE.SERVICE, lowerInclusive, upperInclusive);
     }
 
     /**
-     * Fetch records that have <code>route_host IN (values)</code>
+     * Fetch records that have <code>service IN (values)</code>
      */
-    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchByRouteHost(String... values) {
-        return fetch(RouterTable.ROUTER_TABLE.ROUTE_HOST, values);
+    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchByService(String... values) {
+        return fetch(RouterTable.ROUTER_TABLE.SERVICE, values);
     }
 
     /**
@@ -160,20 +160,6 @@ public class RouterTableDao extends DAOImpl<RouterTableRecord, com.leryn.gateway
      */
     public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchByApiVersion(String... values) {
         return fetch(RouterTable.ROUTER_TABLE.API_VERSION, values);
-    }
-
-    /**
-     * Fetch records that have <code>profile BETWEEN lowerInclusive AND upperInclusive</code>
-     */
-    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchRangeOfProfile(String lowerInclusive, String upperInclusive) {
-        return fetchRange(RouterTable.ROUTER_TABLE.PROFILE, lowerInclusive, upperInclusive);
-    }
-
-    /**
-     * Fetch records that have <code>profile IN (values)</code>
-     */
-    public List<com.leryn.gateway.data.tables.pojos.RouterTable> fetchByProfile(String... values) {
-        return fetch(RouterTable.ROUTER_TABLE.PROFILE, values);
     }
 
     /**

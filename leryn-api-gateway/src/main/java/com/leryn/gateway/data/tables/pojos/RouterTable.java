@@ -19,12 +19,11 @@ public class RouterTable implements Serializable {
     private Integer       id;
     private String        routerId;
     private String        urlPrefix;
-    private String        routeHost;
+    private String        service;
     private Boolean       rewrite;
     private String        rewriteRegexp;
     private String        rewriteTarget;
     private String        apiVersion;
-    private String        profile;
     private LocalDateTime createTime;
     private LocalDateTime modifiedTime;
 
@@ -34,12 +33,11 @@ public class RouterTable implements Serializable {
         this.id = value.id;
         this.routerId = value.routerId;
         this.urlPrefix = value.urlPrefix;
-        this.routeHost = value.routeHost;
+        this.service = value.service;
         this.rewrite = value.rewrite;
         this.rewriteRegexp = value.rewriteRegexp;
         this.rewriteTarget = value.rewriteTarget;
         this.apiVersion = value.apiVersion;
-        this.profile = value.profile;
         this.createTime = value.createTime;
         this.modifiedTime = value.modifiedTime;
     }
@@ -48,24 +46,22 @@ public class RouterTable implements Serializable {
         Integer       id,
         String        routerId,
         String        urlPrefix,
-        String        routeHost,
+        String        service,
         Boolean       rewrite,
         String        rewriteRegexp,
         String        rewriteTarget,
         String        apiVersion,
-        String        profile,
         LocalDateTime createTime,
         LocalDateTime modifiedTime
     ) {
         this.id = id;
         this.routerId = routerId;
         this.urlPrefix = urlPrefix;
-        this.routeHost = routeHost;
+        this.service = service;
         this.rewrite = rewrite;
         this.rewriteRegexp = rewriteRegexp;
         this.rewriteTarget = rewriteTarget;
         this.apiVersion = apiVersion;
-        this.profile = profile;
         this.createTime = createTime;
         this.modifiedTime = modifiedTime;
     }
@@ -113,17 +109,17 @@ public class RouterTable implements Serializable {
     }
 
     /**
-     * Getter for <code>gateway.router_table.route_host</code>. 路由地址
+     * Getter for <code>gateway.router_table.service</code>. 路由地址
      */
-    public String getRouteHost() {
-        return this.routeHost;
+    public String getService() {
+        return this.service;
     }
 
     /**
-     * Setter for <code>gateway.router_table.route_host</code>. 路由地址
+     * Setter for <code>gateway.router_table.service</code>. 路由地址
      */
-    public void setRouteHost(String routeHost) {
-        this.routeHost = routeHost;
+    public void setService(String service) {
+        this.service = service;
     }
 
     /**
@@ -183,20 +179,6 @@ public class RouterTable implements Serializable {
     }
 
     /**
-     * Getter for <code>gateway.router_table.profile</code>. 环境, profile
-     */
-    public String getProfile() {
-        return this.profile;
-    }
-
-    /**
-     * Setter for <code>gateway.router_table.profile</code>. 环境, profile
-     */
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
-
-    /**
      * Getter for <code>gateway.router_table.create_time</code>. 创建时间
      */
     public LocalDateTime getCreateTime() {
@@ -231,12 +213,11 @@ public class RouterTable implements Serializable {
         sb.append(id);
         sb.append(", ").append(routerId);
         sb.append(", ").append(urlPrefix);
-        sb.append(", ").append(routeHost);
+        sb.append(", ").append(service);
         sb.append(", ").append(rewrite);
         sb.append(", ").append(rewriteRegexp);
         sb.append(", ").append(rewriteTarget);
         sb.append(", ").append(apiVersion);
-        sb.append(", ").append(profile);
         sb.append(", ").append(createTime);
         sb.append(", ").append(modifiedTime);
 

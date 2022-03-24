@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.leryn.auth.components.PlainTextPasswordEncoder;
 import com.leryn.auth.constant.SecurityConstants;
 import com.leryn.auth.exception.UsernameNotFoundException;
 import com.leryn.auth.service.UserService;

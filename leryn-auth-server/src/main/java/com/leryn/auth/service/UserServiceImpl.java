@@ -8,8 +8,8 @@ import com.leryn.auth.data.tables.daos.UserDao;
 import com.leryn.auth.data.tables.pojos.Authority;
 import com.leryn.auth.data.tables.pojos.User;
 import com.leryn.auth.exception.UsernameNotFoundException;
-import com.leryn.auth.model.UserDetails;
 import com.leryn.auth.util.cipher.Encryptions;
+import com.leryn.auth.model.UserDetails;
 
 import org.jooq.DSLContext;
 import org.springframework.beans.BeanUtils;

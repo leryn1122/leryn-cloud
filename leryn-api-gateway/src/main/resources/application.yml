@@ -3,6 +3,32 @@ server:
 spring:
   application:
     name: Leryn API Gateway Server
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            maxAge: 18000
+            allow-credentials: true
+            allowed-origin-patterns: "*"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowed-headers:
+              - Authorization
+              - Content-Type
+              - X-Requested-With
+              - X-Access-Token
+            exposed-headers:
+              - Access-Control-Request-Method
+              - Access-Control-Request-Headers
+              - Authorization
+              - Content-Type
+              - X-Requested-With
+              - X-Access-Token
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${DB_USERNAME}

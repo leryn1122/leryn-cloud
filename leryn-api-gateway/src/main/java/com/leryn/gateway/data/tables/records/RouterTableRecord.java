@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 
 import org.jooq.Field;
 import org.jooq.Record1;
-import org.jooq.Record11;
-import org.jooq.Row11;
+import org.jooq.Record10;
+import org.jooq.Row10;
 import org.jooq.impl.UpdatableRecordImpl;
 
 
@@ -19,7 +19,7 @@ import org.jooq.impl.UpdatableRecordImpl;
  * 路由表
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
-public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> implements Record11<Integer, String, String, String, Boolean, String, String, String, String, LocalDateTime, LocalDateTime> {
+public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> implements Record10<Integer, String, String, String, Boolean, String, String, String, LocalDateTime, LocalDateTime> {
 
     private static final long serialVersionUID = 1L;
 
@@ -66,16 +66,16 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
     }
 
     /**
-     * Setter for <code>gateway.router_table.route_host</code>. 路由地址
+     * Setter for <code>gateway.router_table.service</code>. 路由地址
      */
-    public void setRouteHost(String value) {
+    public void setService(String value) {
         set(3, value);
     }
 
     /**
-     * Getter for <code>gateway.router_table.route_host</code>. 路由地址
+     * Getter for <code>gateway.router_table.service</code>. 路由地址
      */
-    public String getRouteHost() {
+    public String getService() {
         return (String) get(3);
     }
 
@@ -136,45 +136,31 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
     }
 
     /**
-     * Setter for <code>gateway.router_table.profile</code>. 环境, profile
-     */
-    public void setProfile(String value) {
-        set(8, value);
-    }
-
-    /**
-     * Getter for <code>gateway.router_table.profile</code>. 环境, profile
-     */
-    public String getProfile() {
-        return (String) get(8);
-    }
-
-    /**
      * Setter for <code>gateway.router_table.create_time</code>. 创建时间
      */
     public void setCreateTime(LocalDateTime value) {
-        set(9, value);
+        set(8, value);
     }
 
     /**
      * Getter for <code>gateway.router_table.create_time</code>. 创建时间
      */
     public LocalDateTime getCreateTime() {
-        return (LocalDateTime) get(9);
+        return (LocalDateTime) get(8);
     }
 
     /**
      * Setter for <code>gateway.router_table.modified_time</code>. 修改时间
      */
     public void setModifiedTime(LocalDateTime value) {
-        set(10, value);
+        set(9, value);
     }
 
     /**
      * Getter for <code>gateway.router_table.modified_time</code>. 修改时间
      */
     public LocalDateTime getModifiedTime() {
-        return (LocalDateTime) get(10);
+        return (LocalDateTime) get(9);
     }
 
     // -------------------------------------------------------------------------
@@ -187,17 +173,17 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
     }
 
     // -------------------------------------------------------------------------
-    // Record11 type implementation
+    // Record10 type implementation
     // -------------------------------------------------------------------------
 
     @Override
-    public Row11<Integer, String, String, String, Boolean, String, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
-        return (Row11) super.fieldsRow();
+    public Row10<Integer, String, String, String, Boolean, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
+        return (Row10) super.fieldsRow();
     }
 
     @Override
-    public Row11<Integer, String, String, String, Boolean, String, String, String, String, LocalDateTime, LocalDateTime> valuesRow() {
-        return (Row11) super.valuesRow();
+    public Row10<Integer, String, String, String, Boolean, String, String, String, LocalDateTime, LocalDateTime> valuesRow() {
+        return (Row10) super.valuesRow();
     }
 
     @Override
@@ -217,7 +203,7 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
 
     @Override
     public Field<String> field4() {
-        return RouterTable.ROUTER_TABLE.ROUTE_HOST;
+        return RouterTable.ROUTER_TABLE.SERVICE;
     }
 
     @Override
@@ -241,17 +227,12 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
     }
 
     @Override
-    public Field<String> field9() {
-        return RouterTable.ROUTER_TABLE.PROFILE;
-    }
-
-    @Override
-    public Field<LocalDateTime> field10() {
+    public Field<LocalDateTime> field9() {
         return RouterTable.ROUTER_TABLE.CREATE_TIME;
     }
 
     @Override
-    public Field<LocalDateTime> field11() {
+    public Field<LocalDateTime> field10() {
         return RouterTable.ROUTER_TABLE.MODIFIED_TIME;
     }
 
@@ -272,7 +253,7 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
 
     @Override
     public String component4() {
-        return getRouteHost();
+        return getService();
     }
 
     @Override
@@ -296,17 +277,12 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
     }
 
     @Override
-    public String component9() {
-        return getProfile();
-    }
-
-    @Override
-    public LocalDateTime component10() {
+    public LocalDateTime component9() {
         return getCreateTime();
     }
 
     @Override
-    public LocalDateTime component11() {
+    public LocalDateTime component10() {
         return getModifiedTime();
     }
 
@@ -327,7 +303,7 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
 
     @Override
     public String value4() {
-        return getRouteHost();
+        return getService();
     }
 
     @Override
@@ -351,17 +327,12 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
     }
 
     @Override
-    public String value9() {
-        return getProfile();
-    }
-
-    @Override
-    public LocalDateTime value10() {
+    public LocalDateTime value9() {
         return getCreateTime();
     }
 
     @Override
-    public LocalDateTime value11() {
+    public LocalDateTime value10() {
         return getModifiedTime();
     }
 
@@ -385,7 +356,7 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
 
     @Override
     public RouterTableRecord value4(String value) {
-        setRouteHost(value);
+        setService(value);
         return this;
     }
 
@@ -414,25 +385,19 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
     }
 
     @Override
-    public RouterTableRecord value9(String value) {
-        setProfile(value);
-        return this;
-    }
-
-    @Override
-    public RouterTableRecord value10(LocalDateTime value) {
+    public RouterTableRecord value9(LocalDateTime value) {
         setCreateTime(value);
         return this;
     }
 
     @Override
-    public RouterTableRecord value11(LocalDateTime value) {
+    public RouterTableRecord value10(LocalDateTime value) {
         setModifiedTime(value);
         return this;
     }
 
     @Override
-    public RouterTableRecord values(Integer value1, String value2, String value3, String value4, Boolean value5, String value6, String value7, String value8, String value9, LocalDateTime value10, LocalDateTime value11) {
+    public RouterTableRecord values(Integer value1, String value2, String value3, String value4, Boolean value5, String value6, String value7, String value8, LocalDateTime value9, LocalDateTime value10) {
         value1(value1);
         value2(value2);
         value3(value3);
@@ -443,7 +408,6 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
         value8(value8);
         value9(value9);
         value10(value10);
-        value11(value11);
         return this;
     }
 
@@ -461,18 +425,17 @@ public class RouterTableRecord extends UpdatableRecordImpl<RouterTableRecord> im
     /**
      * Create a detached, initialised RouterTableRecord
      */
-    public RouterTableRecord(Integer id, String routerId, String urlPrefix, String routeHost, Boolean rewrite, String rewriteRegexp, String rewriteTarget, String apiVersion, String profile, LocalDateTime createTime, LocalDateTime modifiedTime) {
+    public RouterTableRecord(Integer id, String routerId, String urlPrefix, String service, Boolean rewrite, String rewriteRegexp, String rewriteTarget, String apiVersion, LocalDateTime createTime, LocalDateTime modifiedTime) {
         super(RouterTable.ROUTER_TABLE);
 
         setId(id);
         setRouterId(routerId);
         setUrlPrefix(urlPrefix);
-        setRouteHost(routeHost);
+        setService(service);
         setRewrite(rewrite);
         setRewriteRegexp(rewriteRegexp);
         setRewriteTarget(rewriteTarget);
         setApiVersion(apiVersion);
-        setProfile(profile);
         setCreateTime(createTime);
         setModifiedTime(modifiedTime);
     }

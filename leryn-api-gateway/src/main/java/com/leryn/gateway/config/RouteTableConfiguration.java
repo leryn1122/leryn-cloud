@@ -1,18 +1,21 @@
 package com.leryn.gateway.config;
 
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Resource;
 
 import com.leryn.gateway.data.Tables;
 import com.leryn.gateway.data.tables.pojos.RouterTable;
+import com.leryn.gateway.data.tables.pojos.ServiceDiscovery;
 import com.leryn.gateway.util.SpringContextHolder;
 
 import org.jooq.DSLContext;
+import org.jooq.Record;
+import org.jooq.Result;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.GatewayFilterSpec;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder.Builder;
-import org.springframework.cloud.gateway.route.builder.UriSpec;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.Assert;
@@ -37,22 +40,30 @@ public class RouteTableConfiguration {
    */
   @Bean
   public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-    List<RouterTable> routerTables = dsl.select(Tables.ROUTER_TABLE.fields())
+    Map<Record, Result<Record>> routes = dsl
+      .select(Tables.SERVICE_DISCOVERY.fields())
+      .select(Tables.ROUTER_TABLE.fields())
       .from(Tables.ROUTER_TABLE)
-      .where(Tables.ROUTER_TABLE.PROFILE.in(SpringContextHolder.getProfiles()))
-      .fetchInto(RouterTable.class);
-    Assert.isTrue(!CollectionUtils.isEmpty(routerTables),
+      .leftJoin(Tables.SERVICE_DISCOVERY)
+      .on(Tables.SERVICE_DISCOVERY.SERVICE.eq(Tables.ROUTER_TABLE.SERVICE))
+      .where(Tables.SERVICE_DISCOVERY.PROFILE.in(SpringContextHolder.getProfiles()))
+      .fetchGroups(
+        Tables.ROUTER_TABLE.fields(),
+        Tables.SERVICE_DISCOVERY.fields()
+      );
+    Assert.isTrue(!CollectionUtils.isEmpty(routes),
       () -> "Route table contains at least one rules.");
 
     Builder routeBuilder = builder.routes();
 
-    for (RouterTable routerTable : routerTables) {
-      routeBuilder
-        .route(routerTable.getRouterId(),
+    for (Entry<Record, Result<Record>> route : routes.entrySet()) {
+      RouterTable routerTable = route.getKey().into(RouterTable.class);
+      ServiceDiscovery serviceDiscovery = route.getValue().into(ServiceDiscovery.class).get(0);
+      routeBuilder.route(routerTable.getRouterId(),
           r -> r.path(routerTable.getUrlPrefix())
             .filters(f -> routerTable.getRewrite() ? rewriteUriSpec(f, routerTable) : f)
-            .uri(routerTable.getRouteHost())
-        );
+            .uri(serviceDiscovery.getHost())
+      );
     }
     return routeBuilder.build();
   }

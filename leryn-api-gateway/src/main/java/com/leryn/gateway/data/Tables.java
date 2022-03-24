@@ -4,7 +4,10 @@
 package com.leryn.gateway.data;
 
 
+import com.leryn.gateway.data.tables.Dictionary;
+import com.leryn.gateway.data.tables.IgnoredUrl;
 import com.leryn.gateway.data.tables.RouterTable;
+import com.leryn.gateway.data.tables.ServiceDiscovery;
 
 
 /**
@@ -14,7 +17,22 @@ import com.leryn.gateway.data.tables.RouterTable;
 public class Tables {
 
     /**
+     * 字典表
+     */
+    public static final Dictionary DICTIONARY = Dictionary.DICTIONARY;
+
+    /**
+     * 忽略认证而放行URL路径
+     */
+    public static final IgnoredUrl IGNORED_URL = IgnoredUrl.IGNORED_URL;
+
+    /**
      * 路由表
      */
     public static final RouterTable ROUTER_TABLE = RouterTable.ROUTER_TABLE;
+
+    /**
+     * 服务发现
+     */
+    public static final ServiceDiscovery SERVICE_DISCOVERY = ServiceDiscovery.SERVICE_DISCOVERY;
 }

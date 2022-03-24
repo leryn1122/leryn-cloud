@@ -4,8 +4,12 @@
 package com.leryn.gateway.data;
 
 
+import com.leryn.gateway.data.tables.IgnoredUrl;
 import com.leryn.gateway.data.tables.RouterTable;
+import com.leryn.gateway.data.tables.ServiceDiscovery;
+import com.leryn.gateway.data.tables.records.IgnoredUrlRecord;
 import com.leryn.gateway.data.tables.records.RouterTableRecord;
+import com.leryn.gateway.data.tables.records.ServiceDiscoveryRecord;
 
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -24,5 +28,8 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<IgnoredUrlRecord> KEY_IGNORED_URL_IGNORED_URL_UN = Internal.createUniqueKey(IgnoredUrl.IGNORED_URL, DSL.name("KEY_ignored_url_ignored_url_UN"), new TableField[] { IgnoredUrl.IGNORED_URL.URL }, true);
+    public static final UniqueKey<IgnoredUrlRecord> KEY_IGNORED_URL_PRIMARY = Internal.createUniqueKey(IgnoredUrl.IGNORED_URL, DSL.name("KEY_ignored_url_PRIMARY"), new TableField[] { IgnoredUrl.IGNORED_URL.ID }, true);
     public static final UniqueKey<RouterTableRecord> KEY_ROUTER_TABLE_PRIMARY = Internal.createUniqueKey(RouterTable.ROUTER_TABLE, DSL.name("KEY_router_table_PRIMARY"), new TableField[] { RouterTable.ROUTER_TABLE.ID }, true);
+    public static final UniqueKey<ServiceDiscoveryRecord> KEY_SERVICE_DISCOVERY_PRIMARY = Internal.createUniqueKey(ServiceDiscovery.SERVICE_DISCOVERY, DSL.name("KEY_service_discovery_PRIMARY"), new TableField[] { ServiceDiscovery.SERVICE_DISCOVERY.ID }, true);
 }

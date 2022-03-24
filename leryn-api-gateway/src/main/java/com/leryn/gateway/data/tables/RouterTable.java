@@ -17,7 +17,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row11;
+import org.jooq.Row10;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -65,9 +65,9 @@ public class RouterTable extends TableImpl<RouterTableRecord> {
     public final TableField<RouterTableRecord, String> URL_PREFIX = createField(DSL.name("url_prefix"), SQLDataType.VARCHAR(100).nullable(false), this, "URL前缀");
 
     /**
-     * The column <code>gateway.router_table.route_host</code>. 路由地址
+     * The column <code>gateway.router_table.service</code>. 路由地址
      */
-    public final TableField<RouterTableRecord, String> ROUTE_HOST = createField(DSL.name("route_host"), SQLDataType.VARCHAR(100).nullable(false), this, "路由地址");
+    public final TableField<RouterTableRecord, String> SERVICE = createField(DSL.name("service"), SQLDataType.VARCHAR(100).nullable(false), this, "路由地址");
 
     /**
      * The column <code>gateway.router_table.rewrite</code>. 是否重写URL路径
@@ -88,11 +88,6 @@ public class RouterTable extends TableImpl<RouterTableRecord> {
      * The column <code>gateway.router_table.api_version</code>. API版本(如v1,v2等)
      */
     public final TableField<RouterTableRecord, String> API_VERSION = createField(DSL.name("api_version"), SQLDataType.VARCHAR(10).defaultValue(DSL.inline("v1", SQLDataType.VARCHAR)), this, "API版本(如v1,v2等)");
-
-    /**
-     * The column <code>gateway.router_table.profile</code>. 环境, profile
-     */
-    public final TableField<RouterTableRecord, String> PROFILE = createField(DSL.name("profile"), SQLDataType.VARCHAR(100).defaultValue(DSL.inline("default", SQLDataType.VARCHAR)), this, "环境, profile");
 
     /**
      * The column <code>gateway.router_table.create_time</code>. 创建时间
@@ -184,11 +179,11 @@ public class RouterTable extends TableImpl<RouterTableRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row11 type methods
+    // Row10 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row11<Integer, String, String, String, Boolean, String, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
-        return (Row11) super.fieldsRow();
+    public Row10<Integer, String, String, String, Boolean, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
+        return (Row10) super.fieldsRow();
     }
 }
