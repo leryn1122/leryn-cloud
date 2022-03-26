@@ -3,7 +3,7 @@ package com.leryn.message.controller;
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 
-import com.leryn.common.vo.RestfulResponse;
+import com.leryn.common.vo.Result;
 import com.leryn.message.model.EmailMessageHeader;
 import com.leryn.message.service.EmailService;
 
@@ -24,9 +24,9 @@ public class EmailController {
   private EmailService emailService;
 
   @PostMapping("/mail/send")
-  public RestfulResponse sendEmail(@RequestBody EmailMessageHeader emailMessageHeader) throws MessagingException {
+  public Result sendEmail(@RequestBody EmailMessageHeader emailMessageHeader) throws MessagingException {
     emailService.sendEmail(emailMessageHeader);
-    return RestfulResponse.onSuccess(emailMessageHeader);
+    return Result.onSuccess(emailMessageHeader);
   }
 
 }

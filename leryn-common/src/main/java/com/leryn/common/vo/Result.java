@@ -4,7 +4,7 @@ package com.leryn.common.vo;
  * @author Leryn
  * @since Leryn 1.0.0
  */
-public class RestfulResponse {
+public class Result {
 
   // Static Fields.
 
@@ -14,39 +14,39 @@ public class RestfulResponse {
 
   // Static Methods.
 
-  public static RestfulResponse onSuccess(int code, String message, Object data) {
-    return new RestfulResponse(code, message, data);
+  public static Result onSuccess(int code, String message, Object data) {
+    return new Result(code, message, data);
   }
 
-  public static RestfulResponse onSuccess(int code, String message) {
+  public static Result onSuccess(int code, String message) {
     return onSuccess(code, message, null);
   }
 
-  public static RestfulResponse onSuccess(String message) {
+  public static Result onSuccess(String message) {
     return onSuccess(SUCCESS_CODE, message, null);
   }
 
-  public static RestfulResponse onSuccess(String message, Object data) {
+  public static Result onSuccess(String message, Object data) {
     return onSuccess(SUCCESS_CODE, message, data);
   }
 
-  public static RestfulResponse onSuccess(Object data) {
+  public static Result onSuccess(Object data) {
     return onSuccess(SUCCESS_CODE, "", data);
   }
 
-  public static RestfulResponse onError(int code, String message, Object data) {
-    return new RestfulResponse(code, message, data);
+  public static Result onError(int code, String message, Object data) {
+    return new Result(code, message, data);
   }
 
-  public static RestfulResponse onError(int code, String message) {
+  public static Result onError(int code, String message) {
     return onError(code, message, null);
   }
 
-  public static RestfulResponse onError(String message) {
+  public static Result onError(String message) {
     return onError(ERROR_CODE, message, null);
   }
 
-  public static RestfulResponse onError(String message, Object data) {
+  public static Result onError(String message, Object data) {
     return onError(ERROR_CODE, message, data);
   }
 
@@ -62,15 +62,15 @@ public class RestfulResponse {
 
   // Constructors.
 
-  private RestfulResponse() {
+  private Result() {
     this(0, null, null);
   }
 
-  private RestfulResponse(int code, String message) {
+  private Result(int code, String message) {
     this(code, message, null);
   }
 
-  private RestfulResponse(int code, String message, Object data) {
+  private Result(int code, String message, Object data) {
     this.code = code;
     this.message = message;
     this.data = data;

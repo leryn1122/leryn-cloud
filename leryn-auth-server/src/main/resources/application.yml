@@ -41,7 +41,7 @@ spring:
     password: redis123456
     lettuce:
       pool:
-        min-idle: 0
+        min-idle: 2
         max-idle: 8
         max-active: 8
         max-wait: -1ms

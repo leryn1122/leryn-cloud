@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 80
 application:
   gateway:
     auth-server: http://localhost:18080

@@ -2,7 +2,7 @@ package com.leryn.auth.exception;
 
 import javax.validation.ConstraintViolationException;
 
-import com.leryn.common.vo.RestfulResponse;
+import com.leryn.common.vo.Result;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,23 +21,23 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public RestfulResponse methodArgumentNotValidException(MethodArgumentNotValidException e) {
+  public Result methodArgumentNotValidException(MethodArgumentNotValidException e) {
     e.printStackTrace();
-    return RestfulResponse.onError(e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+    return Result.onError(e.getBindingResult().getAllErrors().get(0).getDefaultMessage());
   }
 
   @ExceptionHandler(ConstraintViolationException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
-  public RestfulResponse constraintViolationException(ConstraintViolationException e) {
+  public Result constraintViolationException(ConstraintViolationException e) {
     e.printStackTrace();
-    return RestfulResponse.onError(e.getMessage());
+    return Result.onError(e.getMessage());
   }
 
   @ExceptionHandler(Exception.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-  public RestfulResponse exception(Exception e) {
+  public Result exception(Exception e) {
     e.printStackTrace();
-    return RestfulResponse.onError(e.getMessage());
+    return Result.onError(e.getMessage());
   }
 
 }

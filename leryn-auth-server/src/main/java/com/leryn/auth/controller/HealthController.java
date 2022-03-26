@@ -1,6 +1,6 @@
 package com.leryn.auth.controller;
 
-import com.leryn.common.vo.RestfulResponse;
+import com.leryn.common.vo.Result;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthController {
 
   @GetMapping("/health.do")
-  public RestfulResponse healthCheck() {
-    return RestfulResponse.onSuccess("Health check passed!!");
+  public Result healthCheck() {
+    return Result.onSuccess("Health check passed!!");
   }
 
 }

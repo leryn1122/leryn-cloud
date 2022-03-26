@@ -22,6 +22,7 @@ spring:
               - Content-Type
               - X-Requested-With
               - X-Access-Token
+              - X-Credential-ID
             exposed-headers:
               - Access-Control-Request-Method
               - Access-Control-Request-Headers
@@ -29,6 +30,7 @@ spring:
               - Content-Type
               - X-Requested-With
               - X-Access-Token
+              - X-Credential-ID
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${DB_USERNAME}

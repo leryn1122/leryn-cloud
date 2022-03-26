@@ -1,5 +1,6 @@
 package com.leryn.auth.controller;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +13,7 @@ import com.leryn.auth.exception.UsernameNotFoundException;
 import com.leryn.auth.service.UserService;
 import com.leryn.auth.util.JwtUtils;
 import com.leryn.auth.vo.LoginFormVo;
-import com.leryn.common.vo.RestfulResponse;
+import com.leryn.common.vo.Result;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
@@ -38,12 +39,12 @@ public class LoginController {
   private RedisTemplate<String, Object> redisTemplate;
 
   @PostMapping("/login.do")
-  public RestfulResponse login(@RequestBody @Validated LoginFormVo loginFormVo) throws UsernameNotFoundException {
+  public Result login(@RequestBody @Validated LoginFormVo loginFormVo) throws UsernameNotFoundException {
     String username = loginFormVo.getUsername();
     String password = loginFormVo.getPassword();
 
     if (!userService.verifyUserByCredential(username, password)) {
-      return RestfulResponse.onError(SecurityConstants.PASSWORD_INVALID);
+      return Result.onError(SecurityConstants.PASSWORD_INVALID);
     }
 
     String token = JwtUtils.sign(username, password);
@@ -54,21 +55,28 @@ public class LoginController {
       "token", token
 //      "avatar", "https://leryn-website.oss-cn-shanghai.aliyuncs.com/img/mercy_and_moira.jpg"
     );
-    return RestfulResponse.onSuccess("Login success!!", map);
+    return Result.onSuccess("Login success!!", map);
   }
 
   @GetMapping("/logout.do")
-  public RestfulResponse logout(HttpServletRequest request, HttpServletResponse response) {
+  public Result logout(HttpServletRequest request, HttpServletResponse response) {
     String token = request.getHeader(SecurityConstants.X_ACCESS_TOKEN);
     if (StringUtils.hasLength(token)) {
       redisTemplate.delete(SecurityConstants.TOKEN_PREFIX + token);
-      return RestfulResponse.onSuccess("Logout success!!");
+      return Result.onSuccess("Logout success!!");
     }
-    return RestfulResponse.onSuccess("You haven't login yet.");
+    return Result.onSuccess("You haven't login yet.");
   }
 
   @GetMapping("/getPermCode.do")
-  public RestfulResponse getPermissionCode(HttpServletRequest request) {
-    return RestfulResponse.onSuccess(HttpServletResponse.SC_UNAUTHORIZED, SecurityConstants.UNAUTHORIZED);
+  public Result getPermissionCode(HttpServletRequest request) {
+    Enumeration<String> headerNames = request.getHeaderNames();
+    while (headerNames.hasMoreElements()) {
+      String s = headerNames.nextElement();
+      String header = request.getHeader(s);
+      System.out.println(s + ": " + header);
+    }
+    System.out.println("====================");
+    return Result.onSuccess(HttpServletResponse.SC_UNAUTHORIZED, SecurityConstants.UNAUTHORIZED);
   }
 }
