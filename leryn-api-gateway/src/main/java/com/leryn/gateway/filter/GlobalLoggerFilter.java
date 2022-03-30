@@ -26,8 +26,15 @@ import reactor.core.publisher.Mono;
 @Component
 public class GlobalLoggerFilter implements GlobalFilter, Ordered {
 
-  @SuppressWarnings({"ConstantConditions", "OptionalGetWithoutIsPresent"})
+  /**
+   * API 接口日志, 记录每个接口转发和调用的, 可用于调试 API 路由转发策略.
+   *
+   * <pre>{@code
+   *   GET [ http://dev.leryn.top/v1/auth/health.do ] -> [ http://127.0.0.1:18080/v1/health.do ] from "/127.0.0.1:63543", code: 200 OK
+   * }</pre>
+   */
   @Override
+  @SuppressWarnings({"ConstantConditions", "OptionalGetWithoutIsPresent"})
   public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
     ServerHttpRequest request = exchange.getRequest();
     Set<URI> originalUris = exchange.getAttribute(ServerWebExchangeUtils.GATEWAY_ORIGINAL_REQUEST_URL_ATTR);

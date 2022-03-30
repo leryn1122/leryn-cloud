@@ -1,6 +1,5 @@
 package com.leryn.message.service;
 
-import java.io.File;
 import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -21,6 +20,9 @@ public class EmailService {
   @Resource
   private JavaMailSender mailSender;
 
+  /**
+   * 发送邮件
+   */
   public void sendEmail(EmailMessageHeader emailMessageHeader) throws MessagingException {
     MimeMessage mimeMessage = mailSender.createMimeMessage();
     MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true);
@@ -28,10 +30,10 @@ public class EmailService {
     messageHelper.setTo(emailMessageHeader.getTo());
     messageHelper.setSubject(emailMessageHeader.getSubject());
     messageHelper.setText("一杯茶，一根烟，一个Bug改一天！");
-    messageHelper.addInline("bug.jpg", new File("D:\\SystemUtils\\Desktop\\Activity\\391DCE9C-1A65-4AE7-8685" +
-      "-99712F2DE643.jpg"));
-    messageHelper.addAttachment("bug.jpg", new File("D:\\SystemUtils\\Desktop\\Activity\\391DCE9C-1A65-4AE7-8685" +
-      "-99712F2DE643.jpg"));
+//    messageHelper.addInline("bug.jpg", new File("D:\\SystemUtils\\Desktop\\Activity\\391DCE9C-1A65-4AE7-8685" +
+//      "-99712F2DE643.jpg"));
+//    messageHelper.addAttachment("bug.jpg", new File("D:\\SystemUtils\\Desktop\\Activity\\391DCE9C-1A65-4AE7-8685" +
+//      "-99712F2DE643.jpg"));
     mailSender.send(mimeMessage);
   }
 

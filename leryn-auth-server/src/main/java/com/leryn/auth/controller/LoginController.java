@@ -53,7 +53,6 @@ public class LoginController {
     Map<String, Object> map = new HashMap<>();
     map.put(
       "token", token
-//      "avatar", "https://leryn-website.oss-cn-shanghai.aliyuncs.com/img/mercy_and_moira.jpg"
     );
     return Result.onSuccess("Login success!!", map);
   }

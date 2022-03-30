@@ -3,7 +3,6 @@ package com.leryn.gateway.filter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import javax.annotation.Resource;
 
 import com.leryn.common.vo.Result;
@@ -14,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -99,14 +97,7 @@ public class GlobalAuthenticationFilter implements GlobalFilter, Ordered {
   private ServerWebExchange rewriteCredential(ServerWebExchange exchange, Result result) {
     Map<String, String> map = (Map<String, String>) result.getData();
     return exchange.mutate().request(
-      request -> {
-        request.headers(new Consumer<HttpHeaders>() {
-          @Override
-          public void accept(HttpHeaders headers) {
-            headers.addIfAbsent("X-Credential-Id", map.get("username"));
-          }
-        });
-      }
+      r -> r.headers(h -> h.addIfAbsent("X-Credential-Id", map.get("username")))
     ).build();
   }
 

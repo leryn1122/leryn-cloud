@@ -2,4 +2,4 @@ server:
   port: 8080
 application:
   gateway:
-    auth-server: http://leryn-cloud-auth-server:80
+    auth-server: http://leryn-cloud-auth-server.leryn

@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "application.gateway.auth-server",
+      "type": "java.lang.String",
+      "description": "Description for application.gateway.auth-server."
+    }
+  ]
+}

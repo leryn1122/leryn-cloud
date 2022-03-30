@@ -65,7 +65,7 @@
 
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-parent</artifactId>
+				<artifactId>spring-boot-dependencies</artifactId>
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -185,6 +185,15 @@
 					<groupId>com.spotify</groupId>
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>${docker-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>docker-build</id>
+							<phase>package</phase>
+							<goals>
+								<goal>build</goal>
+							</goals>
+						</execution>
+					</executions>
 					<configuration>
 						<imageName>${docker-registry}/leryn/${project.name}</imageName>
 						<baseImage>${docker-registry}/${jdk.base.image}</baseImage>
