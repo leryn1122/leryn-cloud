@@ -200,7 +200,7 @@
 						<dockerHost>http://leryn.top:12375</dockerHost>
 						<registryUrl>https://${docker-registry}</registryUrl>
 						<workdir>/opt</workdir>
-						<cmd>["java", "-jar", "-Dspring.profiles.active=prod", "${project.build.finalName}.jar"]</cmd>
+						<cmd>["/bin/bash", "-c", "find -type f -name '*.jar' | xargs java $JAVA_OPTS -jar -Dspring.profiles.active=prod"]</cmd>
 						<resources>
 							<resource>
 								<targetPath>/opt</targetPath>
