@@ -36,8 +36,8 @@
 		<protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
 		<docker-maven-plugin.version>1.2.2</docker-maven-plugin.version>
 
-		<docker-registry>docker.leryn.top</docker-registry>
-		<jdk.base.image>openjdk:8-jre-slim</jdk.base.image>
+		<docker-registry>harbor.leryn.top/leryn</docker-registry>
+		<jdk.base.image>harbor.leryn.top/infra/openjdk:8-jre-slim</jdk.base.image>
 	</properties>
 
 	<dependencyManagement>
@@ -196,7 +196,7 @@
 					</executions>
 					<configuration>
 						<imageName>${docker-registry}/leryn/${project.name}</imageName>
-						<baseImage>${docker-registry}/${jdk.base.image}</baseImage>
+						<baseImage>${jdk.base.image}</baseImage>
 						<dockerHost>http://leryn.top:12375</dockerHost>
 						<registryUrl>https://${docker-registry}</registryUrl>
 						<workdir>/opt</workdir>
